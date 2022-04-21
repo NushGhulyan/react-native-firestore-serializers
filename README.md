@@ -1,8 +1,8 @@
-# firestore-serializers
+# React Native firestore-serializers
 [![Coverage Status](https://coveralls.io/repos/github/palkerecsenyi/firestore-serializers/badge.svg?branch=master)](https://coveralls.io/github/palkerecsenyi/firestore-serializers?branch=master)
 ![Unit tests](https://github.com/palkerecsenyi/firestore-serializers/workflows/Unit%20tests/badge.svg)
 
-An automatic JavaScript serialization/deserialization system for Firestore
+An automatic JavaScript serialization/deserialization system for React Native Firestore
 
 ## Features
 - Simple to use – just pass a string to deserialize, or a DocumentSnapshot to serialize
@@ -13,8 +13,6 @@ An automatic JavaScript serialization/deserialization system for Firestore
 
 - Deep serialization/deserialization, including array members
 
-- Works in-browser, in Node.js, or in any native library (e.g. React Native Firebase)
-
 - Comes with full TypeScript type definitions
 
 - Tested with high code coverage
@@ -22,11 +20,15 @@ An automatic JavaScript serialization/deserialization system for Firestore
 ## Why?
 Firestore provides offline support, but it's fairly primitive: if your device doesn't have an internet connection, it uses the cached data, but otherwise it uses live data. So when you're on a slow connection, it often takes ages to query data.
 
-A fix for this is to manually store Firestore data in your own caching system (e.g. React Native's AsyncStorage or LocalStorage in a browser). However, this often presents challenges because Firestore documents can contain non-serializable values.
+A fix for this is to manually store Firestore data in your own caching system (e.g. React Native's AsyncStorage). However, this often presents challenges because Firestore documents can contain non-serializable values.
 
 This library does the heavy lifting for you, by converting special Firestore types (e.g. GeoPoint or DocumentReference) in your documents to serializable values, and vice-versa.
 
 ## Installation
+```
+yarn add https://github.com/NushGhulyan/react-native-firestore-serializers
+```
+or
 ```
 npm install https://github.com/NushGhulyan/react-native-firestore-serializers
 ```
@@ -35,7 +37,12 @@ npm install https://github.com/NushGhulyan/react-native-firestore-serializers
 ```typescript
 
 import firestore from "@react-native-firebase/firestore";
-import {serializeDocumentSnapshot, serializeQuerySnapshot, deserializeDocumentSnapshot, deserializeDocumentSnapshotArray} from "firestore-serializers";
+import {
+  serializeDocumentSnapshot,
+  serializeQuerySnapshot,
+  deserializeDocumentSnapshot,
+  deserializeDocumentSnapshotArray,
+} from "firestore-serializers";
 
 const doc = await firestore()
     .collection('my-collection')
@@ -61,7 +68,7 @@ deserializeDocumentSnapshot(
     serializedDoc,
     firestore(),
     firestore.GeoPoint,
-    firebase.firestore.Timestamp
+    firestore.Timestamp
 );
 
 /*
@@ -71,9 +78,9 @@ Think of it as returning the contents of the 'docs' property of a QuerySnapshot
 */
 deserializeDocumentSnapshotArray(
     serializedCollection,
-    firebase.firestore(),
-    firebase.firestore.GeoPoint,
-    firebase.firestore.Timestamp
+    firestore(),
+    firestore.GeoPoint,
+    firestore.Timestamp
 );
 ```
 
