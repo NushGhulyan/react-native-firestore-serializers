@@ -1,9 +1,9 @@
 {
   "name": "react-native-firestore-serializers",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An automatic Javascript serialization/deserialization system for React Native Firestore",
-  "main": "src/index.ts",
-  "typings": "src/index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "test": "ts-mocha tests/**/*.test.ts --timeout 10000 --exit",
     "coverage": "nyc --reporter=lcov npm run test",

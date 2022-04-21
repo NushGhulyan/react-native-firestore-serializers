@@ -26,11 +26,11 @@ This library does the heavy lifting for you, by converting special Firestore typ
 
 ## Installation
 ```
-yarn add https://github.com/NushGhulyan/react-native-firestore-serializers
+yarn add react-native-firestore-serializers
 ```
 or
 ```
-npm install https://github.com/NushGhulyan/react-native-firestore-serializers
+npm install react-native-firestore-serializers
 ```
 
 ## Usage
