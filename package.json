@@ -1,6 +1,6 @@
 {
   "name": "react-native-firestore-serializers",
-  "version": "0.1.4",
+  "version": "0.0.1",
   "description": "An automatic Javascript serialization/deserialization system for React Native Firestore",
   "main": "src/index.ts",
   "typings": "src/index.d.ts",
@@ -34,5 +34,16 @@
   "dependencies": {
     "lodash": "^4.17.15",
     "@react-native-firebase/firestore": "^14.7.0"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": [
+    "react-native",
+    "firestore",
+    "firebase",
+    "serialize",
+    "serializer",
+    "non-serialized"
+  ]
 }
