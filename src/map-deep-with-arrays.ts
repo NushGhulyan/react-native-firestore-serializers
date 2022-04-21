@@ -1,11 +1,12 @@
 import { cloneDeep, get, isArray, set, isObject, flattenDeep } from "lodash";
-import firebase from "firebase";
+import { FirebaseFirestoreTypes }  from '@react-native-firebase/firestore';
+
 import {itemIsDocumentReference, itemIsGeoPoint, itemIsTimestamp} from "./firestore-identifiers";
 
 type DataMappedValue = string | number | boolean | MappedData | DataMappedValue[];
 
 type DataUnmappedValue = string | number | boolean | UnmappedData | DataUnmappedValue[] |
-    firebase.firestore.DocumentReference | firebase.firestore.Timestamp | firebase.firestore.GeoPoint;
+    FirebaseFirestoreTypes.DocumentReference | FirebaseFirestoreTypes.Timestamp | FirebaseFirestoreTypes.GeoPoint;
 
 export type UnmappedData = {
     [key: string]: DataUnmappedValue

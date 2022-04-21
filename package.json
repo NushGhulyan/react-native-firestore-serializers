@@ -33,6 +33,6 @@
   },
   "dependencies": {
     "lodash": "^4.17.15",
-    "firebase": "^7.14.1"
+    "@react-native-firebase/firestore": "^14.7.0"
   }
 }

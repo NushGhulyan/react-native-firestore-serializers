@@ -1,13 +1,13 @@
-import firebase from "firebase";
+import { FirebaseFirestoreTypes } from "@react-native-firebase/firestore";
 import {SimpleJsonType} from "./types";
 import {mapDeepWithArrays, UnmappedData} from "./map-deep-with-arrays";
 import { get, isEqual, omit } from "lodash";
 
 function objectifyDocumentProperty(
     item: string,
-    firestore: firebase.firestore.Firestore,
-    geoPoint: typeof firebase.firestore.GeoPoint,
-    timestamp: typeof firebase.firestore.Timestamp,
+    firestore: FirebaseFirestoreTypes.Module,
+    geoPoint: typeof FirebaseFirestoreTypes.GeoPoint,
+    timestamp: typeof FirebaseFirestoreTypes.Timestamp,
 ): any {
     let modifiedItem: any = item;
 
@@ -32,11 +32,11 @@ function objectifyDocumentProperty(
     return modifiedItem;
 }
 
-function metadataIsEqual(metadata: firebase.firestore.SnapshotMetadata): boolean {
+function metadataIsEqual(metadata: FirebaseFirestoreTypes.SnapshotMetadata): boolean {
     return metadata.fromCache && !metadata.hasPendingWrites;
 }
 
-function documentIsEqual(id: string, docA: UnmappedData, docB: firebase.firestore.DocumentSnapshot): boolean {
+function documentIsEqual(id: string, docA: UnmappedData, docB: FirebaseFirestoreTypes.DocumentSnapshot): boolean {
     return isEqual(docA, docB.data()) && id === docB.id;
 }
 
@@ -48,10 +48,10 @@ function objectifyDocument(
     partialObject: {
         [key: string]: SimpleJsonType,
     },
-    firestore: firebase.firestore.Firestore,
-    geoPoint: typeof firebase.firestore.GeoPoint,
-    timestamp: typeof firebase.firestore.Timestamp,
-): firebase.firestore.DocumentSnapshot {
+    firestore: FirebaseFirestoreTypes.Module,
+    geoPoint: typeof FirebaseFirestoreTypes.GeoPoint,
+    timestamp: typeof FirebaseFirestoreTypes.Timestamp,
+): FirebaseFirestoreTypes.DocumentSnapshot {
     const mappedObject = mapDeepWithArrays(partialObject, (item: string) => {
         return objectifyDocumentProperty(item, firestore, geoPoint, timestamp);
     });
@@ -67,11 +67,12 @@ function objectifyDocument(
             fromCache: true,
             isEqual: metadataIsEqual
         },
+        //@ts-ignore
         get: (fieldPath: string) => {
             return getField(mappedObjectToInclude, fieldPath);
         },
-        ref: firebase.firestore().doc(path),
-        isEqual(other: firebase.firestore.DocumentSnapshot): boolean {
+        ref: firestore.doc(path),
+        isEqual(other: FirebaseFirestoreTypes.DocumentSnapshot): boolean {
             return documentIsEqual(id, mappedObjectToInclude, other);
         },
         data: () => mappedObjectToInclude
@@ -80,10 +81,10 @@ function objectifyDocument(
 
 export function deserializeDocumentSnapshotArray(
     string: string,
-    firestore: firebase.firestore.Firestore,
-    geoPoint: typeof firebase.firestore.GeoPoint,
-    timestamp: typeof firebase.firestore.Timestamp,
-): firebase.firestore.DocumentSnapshot[] {
+    firestore: FirebaseFirestoreTypes.Module,
+    geoPoint: typeof FirebaseFirestoreTypes.GeoPoint,
+    timestamp: typeof FirebaseFirestoreTypes.Timestamp,
+): FirebaseFirestoreTypes.DocumentSnapshot[] {
     const parsedString: any[] = JSON.parse(string);
     return parsedString.map(doc => {
         return objectifyDocument(doc, firestore, geoPoint, timestamp);
@@ -92,9 +93,9 @@ export function deserializeDocumentSnapshotArray(
 
 export function deserializeDocumentSnapshot(
     string: string,
-    firestore: firebase.firestore.Firestore,
-    geoPoint: typeof firebase.firestore.GeoPoint,
-    timestamp: typeof firebase.firestore.Timestamp,
-): firebase.firestore.DocumentSnapshot {
+    firestore: FirebaseFirestoreTypes.Module,
+    geoPoint: typeof FirebaseFirestoreTypes.GeoPoint,
+    timestamp: typeof FirebaseFirestoreTypes.Timestamp,
+): FirebaseFirestoreTypes.DocumentSnapshot {
     return objectifyDocument(JSON.parse(string), firestore, geoPoint, timestamp);
 }

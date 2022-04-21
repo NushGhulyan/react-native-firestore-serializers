@@ -1,23 +1,23 @@
-import firebase from 'firebase';
+import { FirebaseFirestoreTypes} from '@react-native-firebase/firestore'
 
 declare function serializeDocumentSnapshot(
-    documentSnapshot: firebase.firestore.DocumentSnapshot
+    documentSnapshot: FirebaseFirestoreTypes.DocumentSnapshot
 ): string;
 
 declare function serializeQuerySnapshot(
-    querySnapshot: firebase.firestore.QuerySnapshot
+    querySnapshot: FirebaseFirestoreTypes.QuerySnapshot
 ): string;
 
-declare function deserializeDocumentSnapshot<T = firebase.firestore.DocumentData>(
+declare function deserializeDocumentSnapshot<T = FirebaseFirestoreTypes.DocumentData>(
     input: string,
-    firestore: firebase.firestore.Firestore,
-    geoPoint: typeof firebase.firestore.GeoPoint,
-    timestamp: typeof firebase.firestore.Timestamp
-): firebase.firestore.DocumentSnapshot<T>;
+    firestore: FirebaseFirestoreTypes.Module,
+    geoPoint: typeof FirebaseFirestoreTypes.GeoPoint,
+    timestamp: typeof FirebaseFirestoreTypes.Timestamp
+): FirebaseFirestoreTypes.DocumentSnapshot<T>;
 
-declare function deserializeDocumentSnapshotArray<T = firebase.firestore.DocumentData>(
+declare function deserializeDocumentSnapshotArray<T = FirebaseFirestoreTypes.DocumentData>(
     input: string,
-    firestore: firebase.firestore.Firestore,
-    geoPoint: typeof firebase.firestore.GeoPoint,
-    timestamp: typeof firebase.firestore.Timestamp
-): firebase.firestore.DocumentSnapshot<T>[];
+    firestore: FirebaseFirestoreTypes.Module,
+    geoPoint: typeof FirebaseFirestoreTypes.GeoPoint,
+    timestamp: typeof FirebaseFirestoreTypes.Timestamp
+): FirebaseFirestoreTypes.DocumentSnapshot<T>[];

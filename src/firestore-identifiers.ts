@@ -1,7 +1,7 @@
-import firebase from "firebase";
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore'
 import {hasIn} from "lodash";
 
-export function itemIsDocumentReference(item: any): item is firebase.firestore.DocumentReference {
+export function itemIsDocumentReference(item: any): item is FirebaseFirestoreTypes.DocumentReference {
     return [
         hasIn(item, 'id'),
         hasIn(item, 'parent'),
@@ -10,14 +10,14 @@ export function itemIsDocumentReference(item: any): item is firebase.firestore.D
     ].every(e => e === true);
 }
 
-export function itemIsGeoPoint(item: any): item is firebase.firestore.GeoPoint {
+export function itemIsGeoPoint(item: any): item is FirebaseFirestoreTypes.GeoPoint {
     return [
         hasIn(item, 'latitude'),
         hasIn(item, 'longitude')
     ].every(e => e === true);
 }
 
-export function itemIsTimestamp(item: any): item is firebase.firestore.Timestamp {
+export function itemIsTimestamp(item: any): item is FirebaseFirestoreTypes.Timestamp {
     return [
         hasIn(item, 'seconds'),
         hasIn(item, 'nanoseconds'),
