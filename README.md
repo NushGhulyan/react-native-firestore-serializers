@@ -28,21 +28,21 @@ This library does the heavy lifting for you, by converting special Firestore typ
 
 ## Installation
 ```
-npm install firestore-serializers
+npm install https://github.com/NushGhulyan/react-native-firestore-serializers
 ```
 
 ## Usage
 ```typescript
-import firebase from 'firebase';
-import 'firebase/firestore';
+
+import firestore from "@react-native-firebase/firestore";
 import {serializeDocumentSnapshot, serializeQuerySnapshot, deserializeDocumentSnapshot, deserializeDocumentSnapshotArray} from "firestore-serializers";
 
-const doc = await firebase.firestore()
+const doc = await firestore()
     .collection('my-collection')
     .doc('abc')
     .get();
 
-const collection = await firebase.firestore()
+const collection = await firestore()
     .collection('my-collection')
     .get();
 
@@ -59,8 +59,8 @@ but is NOT an instance of the DocumentSnapshot class.
 */
 deserializeDocumentSnapshot(
     serializedDoc,
-    firebase.firestore(),
-    firebase.firestore.GeoPoint,
+    firestore(),
+    firestore.GeoPoint,
     firebase.firestore.Timestamp
 );
 

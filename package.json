@@ -1,9 +1,9 @@
 {
-  "name": "firestore-serializers",
+  "name": "react-native-firestore-serializers",
   "version": "0.1.4",
-  "description": "An automatic Javascript serialization/deserialization system for Firestore",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "description": "An automatic Javascript serialization/deserialization system for React Native Firestore",
+  "main": "src/index.ts",
+  "typings": "src/index.d.ts",
   "scripts": {
     "test": "ts-mocha tests/**/*.test.ts --timeout 10000 --exit",
     "coverage": "nyc --reporter=lcov npm run test",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/palkerecsenyi/firestore-serializers.git"
+    "url": "git+https://github.com/NushGhulyan/react-native-firestore-serializers.git"
   },
   "author": "Pal Kerecsenyi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/palkerecsenyi/firestore-serializers/issues"
+    "url": "https://github.com/NushGhulyan/react-native-firestore-serializers/issues"
   },
-  "homepage": "https://github.com/palkerecsenyi/firestore-serializers#readme",
+  "homepage": "https://github.com/NushGhulyan/react-native-firestore-serializers#readme",
   "devDependencies": {
     "@types/chai": "^4.2.11",
     "@types/chai-string": "^1.4.2",
