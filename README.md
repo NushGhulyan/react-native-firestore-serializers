@@ -42,7 +42,7 @@ import {
   serializeQuerySnapshot,
   deserializeDocumentSnapshot,
   deserializeDocumentSnapshotArray,
-} from "firestore-serializers";
+} from "react-native-firestore-serializers";
 
 const doc = await firestore()
     .collection('my-collection')

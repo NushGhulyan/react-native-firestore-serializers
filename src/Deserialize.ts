@@ -11,7 +11,7 @@ function objectifyDocumentProperty(
 ): any {
     let modifiedItem: any = item;
 
-    if(item.startsWith && typeof item === 'string') {
+    if(item?.startsWith && typeof item === 'string') {
         if(item.startsWith('__DocumentReference__')) {
             const path = item.split('__DocumentReference__')[1];
             modifiedItem = firestore.doc(path);
