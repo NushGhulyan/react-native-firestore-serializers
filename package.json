@@ -1,6 +1,6 @@
 {
   "name": "react-native-firestore-serializers",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An automatic Javascript serialization/deserialization system for React Native Firestore",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
