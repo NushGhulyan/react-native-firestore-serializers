@@ -10,14 +10,10 @@ declare function serializeQuerySnapshot(
 
 declare function deserializeDocumentSnapshot<T = FirebaseFirestoreTypes.DocumentData>(
     input: string,
-    firestore: FirebaseFirestoreTypes.Module,
-    geoPoint: typeof FirebaseFirestoreTypes.GeoPoint,
-    timestamp: typeof FirebaseFirestoreTypes.Timestamp
+    firestore?: FirebaseFirestoreTypes.Module,
 ): FirebaseFirestoreTypes.DocumentSnapshot<T>;
 
 declare function deserializeDocumentSnapshotArray<T = FirebaseFirestoreTypes.DocumentData>(
     input: string,
-    firestore: FirebaseFirestoreTypes.Module,
-    geoPoint: typeof FirebaseFirestoreTypes.GeoPoint,
-    timestamp: typeof FirebaseFirestoreTypes.Timestamp
+    firestore?: FirebaseFirestoreTypes.Module,
 ): FirebaseFirestoreTypes.DocumentSnapshot<T>[];

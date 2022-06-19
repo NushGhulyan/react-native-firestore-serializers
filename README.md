@@ -61,27 +61,17 @@ const serializedCollection = serializeQuerySnapshot(collection);
 
 /*
 returns DocumentSnapshot-like object
-This matches the actual DocumentSnapshot class in behaviour and properties,
+This matches the actual DocumentSnapshot class in behavior and properties,
 but is NOT an instance of the DocumentSnapshot class.
 */
-deserializeDocumentSnapshot(
-    serializedDoc,
-    firestore(),
-    firestore.GeoPoint,
-    firestore.Timestamp
-);
+deserializeDocumentSnapshot(serializedDoc);
 
 /*
 returns an array of DocumentSnapshot-like objects, like the ones above.
 Does NOT return a QuerySnapshot.
 Think of it as returning the contents of the 'docs' property of a QuerySnapshot
 */
-deserializeDocumentSnapshotArray(
-    serializedCollection,
-    firestore(),
-    firestore.GeoPoint,
-    firestore.Timestamp
-);
+deserializeDocumentSnapshotArray(serializedCollection);
 ```
 
 ## License
